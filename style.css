@@ -87,7 +87,6 @@ h1{
     text-align: center;
     margin-bottom: 40px;
     position: relative;
-    height: 170px;
     display: flex;
     flex-direction: column;
 }

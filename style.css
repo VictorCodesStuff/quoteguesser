@@ -32,7 +32,7 @@ h1{
 }
 
 .card{
-    min-height: 80px;
+    min-height: 60px;
     padding: 1rem;
     border: 1px solid var(--seconday-color);
     border-radius: 10px;
@@ -76,6 +76,18 @@ h1{
         "c1 c2 c3 c4"
         "c5 c6 c7 c8"
         "c9 fake fake c10";
+    }
+}
+@media(max-width: 50em){
+    .grid-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "c1 c2" 
+        "c3 c4"
+        "c5 c6"
+        "c7 c8"
+        "c9 c10"
+        "fake fake";
     }
 }
 

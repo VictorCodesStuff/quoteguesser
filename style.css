@@ -1,0 +1,185 @@
+:root{
+    --background-color: #0E0E10;
+    --primary-color: #1C1F24;
+    --secondary-color: #2E3238;
+    --accent-color: #FF9F45;
+    --text-color: #E6E6E6;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+    text-align: center;
+}
+body{
+    padding: 10px;
+    background-color: var(--background-color);
+    padding: min(50px, 7%);
+}
+h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card{
+    min-height: 80px;
+    padding: 1rem;
+    border: 1px solid var(--seconday-color);
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    text-align: center;
+    color: var(--text-color);
+    transition: 0.2s ease;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card:hover { 
+    transform: translateY(-4px); 
+}
+.card.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #555555;
+    transform: none;
+    pointer-events: none;
+}
+
+
+.grid-container{
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr); 
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "c1 c2 c3 c4 c5 fake"
+    "c6 c7 c8 c9 c10 fake";
+    gap: 1em; 
+    margin-top: 30px;
+}
+
+.quote-box{
+    padding: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 16px;
+    background-color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.quote-box::after, .quote-box::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), transparent 60%, var(--accent-color));
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 16px;
+    animation: 3s spin linear infinite;
+}
+.quote-box::before{
+    filter: blur(1rem);
+    opacity: 0.8;
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+.quote{
+    margin: 8px 0;
+    line-height: 1.4;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+.hidden-text{
+    color: gray;
+    opacity: 0.5;
+}
+.revealed{
+    color: var(--text-color);
+    opacity: 1
+}
+
+.game-stats{
+    display: flex;
+    justify-content: center;
+    color: var(--accent-color);
+}
+.hidden {
+    display: none;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 1000px;
+    padding: 1em 2em;
+    transition: background-color 0.2s ease;
+    position: relative;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+button::after{
+    content: ' ';
+    position: absolute;
+    height: 107%;
+    width: 102%;
+    border-radius: 1000px;
+    background-image: linear-gradient(to bottom right, #ffcd45, #ff8345);
+    z-index: -1;
+}
+button:hover {
+    z-index: 0;
+    box-shadow: 40px 0 100px #ffcd4593, -40px 0 100px #ff834591;
+}
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.quote-area {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.fake-card {
+    background-image: url("delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
